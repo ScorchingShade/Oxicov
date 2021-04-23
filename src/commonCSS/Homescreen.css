@@ -1,0 +1,113 @@
+.text-center {
+    text-align: center;
+}
+
+.location-search-input {
+    display: flex;
+    width: 800px;
+    height: 40px;
+    background: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
+}
+
+.input-suggestion {
+    width: 600px;
+    height: 60px;
+    background-color: rgb(255, 233, 233);
+    border-bottom: 1px black dotted;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: black;
+    font-weight: bold;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    background: url("https://www.seekpng.com/png/detail/871-8719667_download-png-transparent-background-search-icon.png") no-repeat scroll 7px 7px;
+    padding-right: 30px;
+}
+
+#input_container {
+    position: relative;
+}
+
+#input {
+    padding-right: 30px;
+}
+
+#input_img {
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.row {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%
+}
+
+.card {
+    border: 0.1 rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    box-shadow: 5px 10px #888888;
+}
+
+.card-title {
+    padding: 1rem 1rem;
+}
+
+.card-body {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-description {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-body>* {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .location-search-input {
+        display: flex;
+        width: 400px;
+        height: 40px;
+        background: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        color: black;
+        font-weight: bold;
+    }
+    .input-suggestion {
+        width: 300px;
+        height: 60px;
+        background-color: rgb(255, 233, 233);
+        border-bottom: 1px black dotted;
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: black;
+        font-weight: bold;
+    }
+}
