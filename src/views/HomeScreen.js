@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../commonCSS/Homescreen.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -9,7 +9,7 @@ import search from "../images/search.png";
 
 import LocationDataTest from "../components/Home/LocationDataTest";
 
-function HomeScreen() {
+function HomeScreen(props) {
   const [address, setAddress] = useState({ address: "" });
   const searchLogo = search;
 
@@ -25,6 +25,13 @@ function HomeScreen() {
       //.then(latLng => console.log('Success', latLng))
       .catch((error) => console.error("Error", error));
   };
+
+  useEffect(()=>{
+    console.log("Here in home"+JSON.stringify(props))
+    /* if(props.location){
+      window.location.reload();
+    } */
+  })
 
   return (
     <div>
