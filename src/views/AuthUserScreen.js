@@ -113,7 +113,7 @@ function AuthUserScreen(props) {
         </h1>
         <br></br>
         <div className="centered" style={{ width: "100%" }}>
-          <div className="row">
+          <div className="row" style={{width:"100%"}}>
             <div
               className="card"
               style={{ padding: "5%", boxShadow: "5px 10px black" }}

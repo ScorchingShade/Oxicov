@@ -8,8 +8,8 @@ function AboutScreen() {
         <br></br>
         <h1 className="centered" style={{color:"white"}}>About Oxicov</h1>
         <br></br>
-        <div className="row" style={{ width: "100%" }}>
-          <div className="card" style={{ width: "40%" }}>
+        <div className="row" style={{ width: "100%", padding:"5%" }}>
+          <div className="card">
             <div className="card-title centered">
               <h2>What is Oxicov?</h2>
             </div>
@@ -33,7 +33,7 @@ function AboutScreen() {
             </div>
           </div>
 
-          <div className="card" style={{ width: "40%" }}>
+          <div className="card" >
             <div className="card-title centered">
               <h2> How to contribute resources?</h2>
             </div>
@@ -70,7 +70,7 @@ function AboutScreen() {
             </div>
           </div>
 
-          <div className="card" style={{ width: "40%" }}>
+          <div className="card">
             <div className="card-title centered">
               <h2> Contact us!</h2>
             </div>

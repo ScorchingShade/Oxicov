@@ -111,4 +111,11 @@ input {
         color: black;
         font-weight: bold;
     }
+    .row {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 50%
+    }
 }

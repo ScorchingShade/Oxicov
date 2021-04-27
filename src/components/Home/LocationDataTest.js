@@ -43,7 +43,7 @@ function LocationDataTest(props) {
       if(requestData!={}){
         return (
           <div className="centered">
-          <div className="row">
+          <div className="row" style={{ width: "100%" }}>
             {requestData.data.map((item) =>
               splittedLoc[0].toLowerCase() === item.city.toLowerCase() && item.verified? (
                 <div key={item.id} className="card">
