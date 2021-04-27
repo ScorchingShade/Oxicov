@@ -9,7 +9,7 @@ import 'mdbreact/dist/css/mdb.css';
 import axios from 'axios';
 
 
-axios.defaults.baseURL = " http://localhost:3012/"
+axios.defaults.baseURL = "https://oxicov-backend.herokuapp.com/"
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 ReactDOM.render( <
     React.StrictMode >
