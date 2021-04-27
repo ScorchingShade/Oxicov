@@ -6,6 +6,14 @@ function Sidebar(props) {
     const {showClause}=props;
     const [authUser, setAuthUser] = useState();
 
+    const logOutHandler=()=>{
+        localStorage.removeItem("token");
+        window.location.href = "/home"
+        setTimeout(()=>{
+          window.location.reload(false)
+        },200)
+      }
+
     useEffect(() => {
       const token = localStorage.getItem("token");
       if (token === {}) {
@@ -54,7 +62,7 @@ function Sidebar(props) {
                 </NavMenu>
     
                 <NavBtn>
-                    <NavBtnLink to="/logout">Logout</NavBtnLink>
+                <button className="logoutbtn" onClick={()=>logOutHandler()}>Logout</button>
                 </NavBtn>
             </Nav>
               

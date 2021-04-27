@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 
 import { Nav, useHistory } from "react-router-dom";
+import Axios from "axios"
 
-function Register() {
+function Register(props) {
   // let history = useHistory();
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -20,24 +21,74 @@ function Register() {
   };
 
   const [valid, setValid] = useState(true);
+  const [signvalid, setSignvalid] = useState(true);
 
-  const onSubmitHandler = (e) => {
+  const [userError, setUserError] = useState("Please Enter correct credentials");
+  const [counter, setCounter] = useState(0);
+
+  const onSubmitHandler = async (e) => {
+    
     e.preventDefault();
-    console.log("In form " + phone + " " + password);
-
-    password != confirmPass || phone === "" ? setValid(false) : setValid(true);
-
+    
+    
     if (password !== confirmPass || phone === "" || password === "") {
-      setValid(false);
+      if(confirmPass===""){
+        console.log("in confirmPass")
+        setValid(false);
+        setCounter(0)
+      }
+      
+      
     } else {
       setValid(true);
       //  history.push("/home");
     }
+
+    
+
+    
+      if(valid){
+        const data = {
+          phone: phone,
+          pass: password,
+          isAdmin: false,
+        };
+    
+        try {
+          const request = await Axios.post("api/v1/users/signup", data);
+          localStorage.setItem("token", request.data.token);
+          props.history.push("/authHome");
+          setTimeout(()=>{
+            window.location.reload(false)
+          },200)
+        } catch (e) {
+          if(e.message!==undefined){
+            if(e.message.includes("409")){
+              setUserError("User already available, please log in!");
+            }
+          }
+          
+           
+          setSignvalid(false);
+        }
+      }
+    
+   
+   
   };
 
   const handleClick = () => {
-    // history.push("/login");
+    props.history.push("/login");
   };
+
+  useEffect(() => {
+    if (password !== confirmPass || phone === "" || password === ""||confirmPass==="") {
+      
+      setValid(false)
+      setCounter(1)
+      
+    } 
+  },[confirmPass, phone, password])
 
   return (
     <MDBContainer>
@@ -67,7 +118,7 @@ function Register() {
                 onChange={(e) => setPhone(e.target.value)}
               />
 
-              <div style={valid ? validFeed : invalidFeed}>
+              <div style={valid|| counter===1? validFeed : invalidFeed}>
                 Please enter a valid Contact number!
               </div>
 
@@ -89,8 +140,13 @@ function Register() {
                 onChange={(e) => setConfirmPass(e.target.value)}
               />
 
-              <div style={valid ? validFeed : invalidFeed}>
+              <div style={valid||counter===1 ?  validFeed : invalidFeed}>
                 Passwords must match!
+              </div>
+
+
+              <div style={signvalid ? validFeed : invalidFeed}>
+                {userError}
               </div>
             </div>
 

@@ -37,9 +37,11 @@ function LoginTest(props) {
 
     try {
       const request = await Axios.post("api/v1/users/signin", data);
-      console.log("This is request" + JSON.stringify(request));
       localStorage.setItem("token", request.data.token);
       props.history.push("/authHome");
+      setTimeout(()=>{
+        window.location.reload(false)
+      },200)
     } catch (e) {
       console.log("Here in error" + e);
       setValid(false);

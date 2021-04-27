@@ -5,7 +5,8 @@ import "../../commonCSS/Navbar.css";
 
 function NavIndex(props) {
   const [vis, setVis] = useState(false);
-  const [authUser, setAuthUser] = useState();
+
+  let {authUser}=props
 
 /*   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -17,18 +18,23 @@ function NavIndex(props) {
       console.log("Here is the token" + JSON.stringify(authUser));
     }
   }); */
+  console.log("The Auth user prop is "+authUser)
+
+  const logOutHandler=()=>{
+    localStorage.removeItem("token");
+    window.location.href = "/home"
+    setTimeout(()=>{
+      window.location.reload(false)
+    },200)
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (props.token === {}) {
-        console.log("Navbar props are not available"+props.token);
-      setAuthUser(null);
-    } else {
-        console.log("Navbar props are "+props.token);
-      setAuthUser(token);
-      console.log("Here is the navbar token" + JSON.stringify(authUser));
-    }
-  });
+      if(!authUser){
+          console.log("No auth user found")
+      }else{
+          authUser=props.authUser;
+      }
+  })
 
   if (!authUser) {
     return (
@@ -95,7 +101,9 @@ function NavIndex(props) {
           </NavMenu>
 
           <NavBtn>
-            <NavBtnLink to="/logout">Logout</NavBtnLink>
+            {/* <NavBtnLink to="/logout">Logout</NavBtnLink> */}
+
+            <button className="logoutbtn" onClick={()=>logOutHandler()}>Logout</button>
           </NavBtn>
         </Nav>
 
